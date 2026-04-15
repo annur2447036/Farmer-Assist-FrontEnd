@@ -1,0 +1,86 @@
+<div class="d-flex flex-column min-vh-100 main-wrapper">
+
+  <nav class="navbar navbar-expand-lg custom-navbar sticky-top py-3">
+
+    <div class="container">
+
+      <a class="navbar-brand brand-logo fw-bold">
+        🌾 Kisan <span>Link</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- DESKTOP MENU -->
+      <div class="collapse navbar-collapse justify-content-between">
+
+        <ul class="navbar-nav mx-auto nav-center">
+          <li class="nav-item"><a class="nav-link nav-hover" routerLink="/">🏠 Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-hover">ℹ️ About</a></li>
+          <li class="nav-item"><a class="nav-link nav-hover" routerLink="/enquiry">📩 Enquiry</a></li>
+          <li class="nav-item"><a class="nav-link nav-hover">🛒 Product</a></li>
+        </ul>
+
+        <div class="d-flex gap-4 align-items-center">
+
+          <div class="big-box farmer-box glow-green">
+            <div class="big-title">🌿 FARMER</div>
+            <div class="big-links">
+              <a routerLink="/farmer-login">LOGIN</a>
+              <span>|</span>
+              <a routerLink="/farmer-register">REGISTER</a>
+            </div>
+          </div>
+
+          <div class="big-box customer-box glow-blue">
+            <div class="big-title">👤 CUSTOMER</div>
+            <div class="big-links">
+              <a routerLink="/login">LOGIN</a>
+              <span>|</span>
+              <a routerLink="/signUp">SIGN UP</a>
+            </div>
+          </div>
+
+          <button (click)="toggleDarkMode()" class="dark-btn">🌙</button>
+
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">🌾 Kisan Link</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body mobile-menu">
+
+      <a routerLink="/" class="mobile-link">🏠 Home</a>
+
+      <div class="mobile-section">
+        <p>👤 Customer</p>
+        <a routerLink="/login">Login</a>
+        <a routerLink="/signUp">Register</a>
+      </div>
+
+      <div class="mobile-section">
+        <p>🌿 Farmer</p>
+        <a routerLink="/farmer-login">Login</a>
+        <a routerLink="/farmer-register">Register</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container flex-grow-1 my-4 fade-in">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<!-- src/app/layouts/admin-layout/admin-layout.component.html -->
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="logo">🛒 FARMER ADMIN</div>
+    <nav>
+      <a routerLink="/farmer/dashboard" routerLinkActive="active">Home</a>
+      <a  routerLinkActive="active">Products</a>
+      <a routerLink="" routerLinkActive="active"> Post My Product</a>
+      <a  routerLinkActive="active">view Order</a>
+      <a routerLinkActive="active">View Sample</a>
+      <a  routerLinkActive="active"></a>
+      <a  routerLinkActive="active"></a>
+    </nav>
+    <button class="logout" (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <h2>FARMER Dashboard</h2>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

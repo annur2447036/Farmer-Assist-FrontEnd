@@ -1,0 +1,63 @@
+
+<div class="feedback-container">
+  <h2>📝 Share Your Feedback</h2>
+  <div *ngIf="submitted" class="success">✅ Thank you for your valuable feedback!</div>
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Name</label>
+      <input formControlName="name" placeholder="Enter your name" />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input formControlName="email" placeholder="Enter your email" />
+    </div>
+
+    <div class="form-group">
+      <label>Mobile</label>
+      <input formControlName="mobile" placeholder="Enter 10-digit number" />
+    </div>
+
+    <div class="rating-group">
+      <label>Product Quality:</label>
+      <div class="stars">
+       <span *ngFor="let i of [1,2,3,4,5]" (click)="setRating('productQuality',i)"
+       [class.filled]="i<=feedbackForm.value.productQuality">★</span>
+      </div>
+    </div>
+
+    <div class="rating-group">
+      <label>Product Price:</label>
+      <div class="stars">
+        <span *ngFor="let i of [1,2,3,4,5]" (click)="setRating('productPrice', i)"
+          [class.filled]="i <= feedbackForm.value.productPrice">★</span>
+      </div>
+    </div>
+
+    <div class="rating-group">
+      <label>Order Process:</label>
+      <div class="stars">
+        <span *ngFor="let i of [1,2,3,4,5]" (click)="setRating('orderProcess', i)"
+          [class.filled]="i <= feedbackForm.value.orderProcess">★</span>
+      </div>
+    </div>
+
+    <div class="rating-group">
+      <label>Delivery Service:</label>
+      <div class="stars">
+        <span *ngFor="let i of [1,2,3,4,5]" (click)="setRating('deliveryService', i)"
+          [class.filled]="i <= feedbackForm.value.deliveryService">★</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Suggestions</label>
+      <textarea formControlName="suggestion" placeholder="Write your thoughts..."></textarea>
+    </div>
+
+    <button type="submit" [disabled]="submitting" >Submit Feedback</button>
+  </form>
+
+  
+</div>

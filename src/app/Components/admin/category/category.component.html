@@ -1,0 +1,70 @@
+<h2 class="mb-3">Manage Categories</h2>
+
+<div class="card p-3 shadow-sm mb-4">
+  <h4>{{ isEdit ? 'Edit Category' : 'Add New Category' }}</h4>
+
+  <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div class="row mt-3">
+
+    <div class="col-md-6 mb-3">
+      <label>Category Name</label>
+      <input class="form-control" [(ngModel)]="newCategory.name" required>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label>Image</label>
+      <input type="file" class="form-control" (change)="onImageSelected($event)">
+    </div>
+
+    <div class="col-md-6 mb-3" *ngIf="imagePreview">
+      <label>Preview</label><br>
+      <img [src]="imagePreview" class="img-thumbnail" style="width: 120px;">
+    </div>
+
+    <div class="col-12 mt-2">
+      <button class="btn btn-primary"
+              *ngIf="!isEdit"
+              (click)="saveCategory()"
+              [disabled]="!newCategory.name">
+        Add
+      </button>
+
+      <button class="btn btn-success"
+              *ngIf="isEdit"
+              (click)="updateCategory()">
+        Update
+      </button>
+
+      <button class="btn btn-secondary ms-2" (click)="resetForm()">Clear</button>
+    </div>
+
+  </div>
+</div>
+
+<table class="table table-bordered shadow-sm">
+  <thead class="table-light">
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of categories">
+      <td>{{ c.id }}</td>
+      <td>
+        <img [src]="c.imageurl" class="img-thumbnail"
+             style="width: 70px; height: 70px;">
+      </td>
+      <td>{{ c.name }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" (click)="editCategory(c)">Edit</button>
+        <button class="btn btn-sm btn-danger ms-1" (click)="deleteCategory(c.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
