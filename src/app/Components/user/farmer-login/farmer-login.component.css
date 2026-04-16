@@ -1,4 +1,4 @@
-.login-wrapper {
+/* .login-wrapper {
   background: linear-gradient(135deg, #e9f7ef, #f8f9fa);
 }
 
@@ -61,4 +61,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+} */
+
+.login-wrapper {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('/assets/images/farmer.jpg');
+  background-size: cover;
+  background-position: center;
 }

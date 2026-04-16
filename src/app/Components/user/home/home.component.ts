@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  imageUrl = 'assets/images/farmer.jpg';
+
 }

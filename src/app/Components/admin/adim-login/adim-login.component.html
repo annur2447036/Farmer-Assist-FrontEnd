@@ -1,24 +1,28 @@
-<div class="card mx-auto mt-5" style="max-width: 400px;">
-  <div class="card-body">
-    <h3 class="card-title text-center mb-4">Login</h3>
+<div class="login-wrapper">
 
-    <div *ngIf="message" class="alert alert-danger">{{ message }}</div>
+  <div class="login-card">
 
-    <div class="mb-3">
-      <label class="form-label">Email</label>
-      <input type="email" [(ngModel)]="loginRequest.username" class="form-control" />
+    <h3 class="title">🔐 Welcome Back</h3>
+
+    <div *ngIf="message" class="alert alert-danger custom-alert">
+      {{ message }}
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Password</label>
-      <input type="password" [(ngModel)]="loginRequest.password" class="form-control" />
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="loginRequest.username" placeholder="Enter your email">
     </div>
 
-    <button (click)="login()" class="btn btn-primary w-100">
-        <span *ngIf="!isLoading">Login</span>
-        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" ></span>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" [(ngModel)]="loginRequest.password" placeholder="Enter your password">
+    </div>
+
+    <button (click)="login()" class="login-btn">
+      <span *ngIf="!isLoading">Login</span>
+      <span *ngIf="isLoading" class="spinner"></span>
     </button>
 
-   
   </div>
+
 </div>

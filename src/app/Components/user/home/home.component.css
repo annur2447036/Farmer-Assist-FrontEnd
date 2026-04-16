@@ -1,0 +1,10 @@
+.hero-section {
+  height: 90vh;
+  background-image: url('/..assets/images/farmer.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}

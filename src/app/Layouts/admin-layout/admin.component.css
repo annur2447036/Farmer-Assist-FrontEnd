@@ -1,71 +1,111 @@
 .admin-layout {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f7fb;
   min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
 }
 
 .topbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  padding: 12px 30px;
-  color: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  justify-content: space-between;
+  padding: 15px 30px;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 0 0 15px 15px;
 }
 
 .logo {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
+  color: #2e7d32;
   letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-links a {
+  position: relative;
   text-decoration: none;
-  color: #e0e0e0;
-  font-size: 15px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 5px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #4caf50;
   transition: 0.3s;
 }
 
 .nav-links a:hover {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
+  color: #4caf50;
 }
 
-.nav-links a.active {
-  background: #fff;
-  color: #2a5298;
-  font-weight: bold;
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links .active {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.nav-links .active::after {
+  width: 100%;
 }
 
 .logout {
-  background: #ff4d4d;
+  background: linear-gradient(45deg, #e53935, #ef5350);
   border: none;
-  padding: 6px 14px;
   color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 500;
   transition: 0.3s;
 }
 
 .logout:hover {
-  background: #cc0000;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .main-content {
-  padding: 20px;
+  padding: 25px;
 }
 
 .content {
-  background: #fff;
+  background: white;
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-height: 80vh;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
