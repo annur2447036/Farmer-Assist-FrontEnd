@@ -1,26 +1,58 @@
-<!-- src/app/layouts/admin-layout/admin-layout.component.html -->
-<div class="admin-layout">
-  <aside class="sidebar">
-    <div class="logo">🛒 FARMER ADMIN</div>
-    <nav>
-      <a routerLink="/farmer/dashboard" routerLinkActive="active">Home</a>
-      <a  routerLinkActive="active">Products</a>
-      <a routerLink="" routerLinkActive="active"> Post My Product</a>
-      <a  routerLinkActive="active">view Order</a>
-      <a routerLinkActive="active">View Sample</a>
-      <a  routerLinkActive="active"></a>
-      <a  routerLinkActive="active"></a>
+<div class="d-flex admin-wrapper">
+
+  <aside class="sidebar bg-dark text-white p-3">
+    <div class="text-center mb-4">
+      <h4 class="fw-bold text-warning">🛒 FARMER ADMIN</h4>
+    </div>
+
+    <nav class="nav flex-column">
+
+      <a routerLink="/farmer/dashboard" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-house-door me-2"></i> Home
+      </a>
+
+      <a routerLink="/farmer/products" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-box-seam me-2"></i> Products
+      </a>
+
+      <a routerLink="/farmer/post-product" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-plus-circle me-2"></i> Post My Product
+      </a>
+
+      <a routerLink="/farmer/orders" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-cart-check me-2"></i> View Orders
+      </a>
+
+      <a routerLink="/farmer/sample" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-eye me-2"></i> View Sample
+      </a>
+
+      <a routerLink="/farmer/manage-product" routerLinkActive="active" class="nav-link text-white">
+        <i class="bi bi-tags me-2"></i> Category
+      </a>
+
     </nav>
-    <button class="logout" (click)="logout()">Logout</button>
+
+    <button class="btn btn-danger w-100 mt-4" (click)="logout()">
+      <i class="bi bi-box-arrow-right me-2"></i> Logout
+    </button>
   </aside>
 
-  <main class="main-content">
-    <header class="topbar">
-      <h2>FARMER Dashboard</h2>
+  <main class="flex-grow-1 bg-light">
+
+    <header class="topbar d-flex justify-content-between align-items-center px-4 py-3 shadow-sm bg-white">
+      <h4 class="mb-0 fw-bold text-success">🌾 Farmer Dashboard</h4>
+      <span class="badge bg-success">Active</span>
     </header>
 
-    <section class="content">
-      <router-outlet></router-outlet>
+    <section class="p-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </section>
+
   </main>
+
 </div>

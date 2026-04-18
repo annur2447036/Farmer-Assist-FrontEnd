@@ -6,6 +6,7 @@ import { adminAuthGuard } from './guards/admin-auth.guard';
 import { AdminComponent } from './Layouts/admin-layout/admin.component';
 import { customerAuthGuard } from './guards/customer-auth.guard';
 import { FarmerLoginComponent } from './Components/user/farmer-login/farmer-login.component';
+import { FarmerComponent } from './Layouts/farmer/farmer.component';
 
 export const routes: Routes = [
     {
@@ -51,9 +52,10 @@ export const routes: Routes = [
     },
     {
         path:'farmer',
-        component:FarmerLoginComponent,
+        component:FarmerComponent,
         children:[
-        {path:'f-dashboard',loadComponent:()=>import('./Components/farmer/f-dashboard/f-dashboard.component').then(m=>m.FDashboardComponent)}
+        {path:'f-dashboard',loadComponent:()=>import('./Components/farmer/f-dashboard/f-dashboard.component').then(m=>m.FDashboardComponent)},
+        {path:'manage-product',loadComponent:()=>import('./Components/farmer/manage-product/manage-product.component').then(m=>m.ManageProductComponent)}
         ]
 
     }
