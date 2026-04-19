@@ -30,8 +30,8 @@
     <div class="col-md-3 mb-3">
       <label>Category</label>
       <select class="form-control" [(ngModel)]="newProduct.categoryId">
-        <option [value]="0" disabled>Select Category</option>
-        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+        <option [value]="null" disabled>Select Category</option>
+        <option *ngFor="let c of categories" [value]="c.cid">{{ c.name }}</option>
       </select>
     </div>
 
@@ -95,7 +95,7 @@
       <td>
         <img *ngIf="p.images && p.images.length" [src]="p.images[0].imageUrl" style="width:60px;height:60px;object-fit:cover;">
       </td>
-      <td>{{ p.name }}</td>
+      <td>{{ p.product_name }}</td>
       <td>{{ p.category.name }}</td>
       <td>₹{{ p.price }}</td>.......
       <td>{{ p.stock }}</td>

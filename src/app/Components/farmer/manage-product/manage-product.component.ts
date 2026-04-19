@@ -102,7 +102,20 @@ export class ManageProductComponent implements OnInit {
   }
 
   addProduct(){
-    this.newProduct.farmerId = this.farmer.id;
+
+this.newProduct.farmerId = this.farmer?.id;
+
+  if (!this.newProduct.farmerId) {
+    alert('Farmer ID missing');
+    return;
+  }
+
+  if (!this.newProduct.categoryId) {
+    alert('Category ID missing');
+    return;
+  }
+
+
     debugger;
     console.log(this.newProduct);
     this.ProductService.add(this.newProduct).subscribe({
@@ -125,11 +138,11 @@ export class ManageProductComponent implements OnInit {
     this.isEdit = true;
 
     this.newProduct={
-      name:p.name,
+      name:p.product_name,
       price:p.price,
       stock:p.stock,
       available:p.available,
-      categoryId:p.category?.id||0,
+      categoryId:p.category?.cid||0,
       farmerId:p.farmer?.id || 0,
       imageurls:p.images?.[0].imageUrl || [],
       specifications:p.specifications || [],

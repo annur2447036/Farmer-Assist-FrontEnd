@@ -28,7 +28,7 @@ export interface IProductImage{
 
 export interface IProduct{
   id?:number;
-  name:string;
+  product_name:string;
   price:number;   
   stock:number;
   available?:boolean;

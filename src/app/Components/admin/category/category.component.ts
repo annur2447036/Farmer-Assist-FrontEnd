@@ -79,9 +79,9 @@ export class CategoryComponent implements OnInit {
 
   // ✅ UPDATE
   updateCategory() {
-    if (!this.newCategory.id) return;
+    if (!this.newCategory.cid) return;
 
-    this.category.update(this.newCategory.id, this.newCategory).subscribe({
+    this.category.update(this.newCategory.cid, this.newCategory).subscribe({
       next: () => {
         this.success = 'Category updated successfully';
         this.loadCategories();

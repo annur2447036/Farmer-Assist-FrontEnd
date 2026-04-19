@@ -62,7 +62,7 @@
 
       <tbody>
         <tr *ngFor="let c of categories">
-          <td>{{ c.id }}</td>
+          <td>{{ c.cid }}</td>
 
           <td>
             <img [src]="c.imageurl" class="table-img">
@@ -72,7 +72,7 @@
 
           <td>
             <button class="btn btn-sm btn-edit" (click)="editCategory(c)">Edit</button>
-            <button class="btn btn-sm btn-delete ms-1" (click)="deleteCategory(c.id)">Delete</button>
+            <button class="btn btn-sm btn-delete ms-1" (click)="deleteCategory(c.cid)">Delete</button>
           </td>
         </tr>
       </tbody>

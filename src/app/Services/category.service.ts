@@ -4,7 +4,7 @@ import { API_BASE_URL } from './api.config';
 import { HttpClient } from '@angular/common/http';
 
 export interface ICategory {
-  id?: number;
+  cid?: number;
   name: string;
   imageurl: string;
 }
