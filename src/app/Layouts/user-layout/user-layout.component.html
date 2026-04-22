@@ -1,10 +1,10 @@
-<div class="d-flex flex-column min-vh-100 bg-light main-wrapper">
+<div class="d-flex flex-column min-vh-100 main-wrapper">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-3">
     <div class="container">
 
-      <a class="navbar-brand fw-bold text-success fs-4">
-        🌾 Kisan <span class="text-primary">Link</span>
+      <a class="navbar-brand fw-bold text-white fs-4">
+        🌾 Kisan <span class="text-warning">Link</span>
       </a>
 
       <button class="navbar-toggler border-0" type="button"
@@ -14,14 +14,44 @@
 
       <div class="collapse navbar-collapse justify-content-between">
 
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link fw-semibold" routerLink="/">🏠 Home</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold">ℹ️ About</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" routerLink="/enquiry">📩 Enquiry</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold">🛒 Product</a></li>
+        <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-3">
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-2 text-white" routerLink="/">🏠 Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-2 text-white">ℹ️ About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-2 text-white" routerLink="/enquiry">📩 Enquiry</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-2 text-white" routerLink="/products"> 🛒 Product</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold px-2 text-white" data-bs-toggle="dropdown">
+              🚜 Modern Farming
+            </a>
+            <ul class="dropdown-menu shadow border-0">
+              <li><a class="dropdown-item" routerLink="/modern/agri-robotics">🤖 Agriculture Robotics</a></li>
+              <li><a class="dropdown-item" routerLink="/modern/aeroponics">🌫️ Aeroponics</a></li>
+              <li><a class="dropdown-item" routerLink="/modern/greenhouse">🌱 Greenhouse</a></li>
+              <li><a class="dropdown-item" routerLink="/modern/hydroponics">💧 Hydroponics</a></li>
+              <li><a class="dropdown-item" routerLink="/modern/precision-farming">📡 Precision Farming</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-2 text-white" routerLink="/contact">📞 Contact Us</a>
+          </li>
+
         </ul>
 
-        <div class="d-flex gap-3 align-items-center">
+        <div class="d-flex align-items-center gap-3">
 
           <div class="card text-center shadow-sm border-0 px-3 py-2">
             <div class="fw-bold text-success">🌿 FARMER</div>
@@ -39,7 +69,7 @@
             </small>
           </div>
 
-          <button (click)="toggleDarkMode()" class="btn btn-dark rounded-circle">
+          <button (click)="toggleDarkMode()" class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center" style="width:42px;height:42px;">
             🌙
           </button>
 
@@ -49,34 +79,10 @@
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
-    <div class="offcanvas-header">
-      <h5 class="fw-bold text-success">🌾 Kisan Link</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-
-    <div class="offcanvas-body">
-
-      <a routerLink="/" class="d-block mb-2">🏠 Home</a>
-
-      <div class="mt-3">
-        <p class="fw-bold text-primary mb-1">👤 Customer</p>
-        <a routerLink="/login" class="d-block">Login</a>
-        <a routerLink="/signUp" class="d-block">Register</a>
-      </div>
-
-      <div class="mt-3">
-        <p class="fw-bold text-success mb-1">🌿 Farmer</p>
-        <a routerLink="/farmer-login" class="d-block">Login</a>
-        <a routerLink="/farmer-register" class="d-block">Register</a>
-      </div>
-
-    </div>
-  </div>
-
   <div class="container flex-grow-1 my-4">
-    <router-outlet></router-outlet>
+    <router-outlet>
+      
+    </router-outlet>
   </div>
 
 </div>

@@ -67,6 +67,9 @@ export class ProductService {
   delete(id:number):Observable<any>{
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
 
+}
 
+getByFarmerId(id: number): Observable<IProduct[]> {
+  return this.http.get<IProduct[]>(`${this.apiUrl}/farmer/${id}`);
 }
 }

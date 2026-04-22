@@ -61,7 +61,10 @@ export class ManageProductComponent implements OnInit {
   }
 
   loadProducts() {
-    this.ProductService.getAll().subscribe({
+    if(this.farmer){
+    this.ProductService.getByFarmerId(this.farmer.id!).subscribe({
+      
+      
       next: (res) => {
         console.log("Products from api", res);
         this.products = res;
@@ -71,12 +74,17 @@ export class ManageProductComponent implements OnInit {
       }
     })
   }
+  else{
+    this.products=[];
+  }
+}
 
   onImageSelected(event: any) {
     const files = event.target.files;
 
     this.newProduct.imageurls = [];
     this.imagePreview = null;
+    
 
     if (!files.length) return
 
@@ -116,7 +124,6 @@ this.newProduct.farmerId = this.farmer?.id;
   }
 
 
-    debugger;
     console.log(this.newProduct);
     this.ProductService.add(this.newProduct).subscribe({
       next: ()=>{
@@ -142,9 +149,11 @@ this.newProduct.farmerId = this.farmer?.id;
       price:p.price,
       stock:p.stock,
       available:p.available,
-      categoryId:p.category?.cid||0,
+      categoryId:p.category?.id||0,
       farmerId:p.farmer?.id || 0,
-      imageurls:p.images?.[0].imageUrl || [],
+      // imageurls:p.images?.[0].imageUrl || [],
+
+      imageurls: p.images ? p.images.map(img => img.imageUrl) : [],
       specifications:p.specifications || [],
       id:p.id      
     }
@@ -154,27 +163,44 @@ this.newProduct.farmerId = this.farmer?.id;
     if(!this.newProduct.id) return;
 
     this.ProductService.update(this.newProduct.id,this.newProduct).subscribe({
-     next:()=>{
+     next:(res)=>{
         alert('Product Update');
         this.resetForm();
         this.loadProducts();
       },
-      error:err => alert('Error '+ (err.error || err.message || JSON.stringify(err)))
-    })
+      error:err => {alert('Error '+ (err.error || err.message || JSON.stringify(err))
+        
+    
+    )
+      
+  }})
   }
 
-  deleteProduct(id:number){
-    if(!confirm('Are you sure you want to delete this product?')) return;
+  // 
+  
 
-    this.ProductService.delete(id).subscribe({
-      next:()=>{
-        alert('Product Deleted..');
+
+  deleteProduct(id: number) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+
+  console.log("Deleting ID:", id);
+
+  this.ProductService.delete(id).subscribe({
+    next: (res) => {
+      alert('Product Deleted',);
+      console.log(res);
+      this.products = this.products.filter(p => p.id !== id);
+      if (this.newProduct.id === id) {
         this.resetForm();
-        this.loadProducts();
-      },
-      error:err => alert('Error '+ (err.error || err.message || JSON.stringify(err)))
-    })
-  }
+      }
+    },
+    error: (err) => {
+      console.log("Delete error:", err);
+      console.error(err);
+      alert('Error: ' + (err.error || 'Delete failed'));
+    }
+  });
+}
 
   resetForm(){
     this.isEdit=false;

@@ -1,1 +1,55 @@
-<router-outlet></router-outlet>
+<div class="d-flex flex-column min-vh-100 bg-light">
+
+
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="bg-light pt-5 pb-3 mt-auto border-top border-success">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <div class="col-md-4 mb-3">
+          <h4 class="fw-bold text-success">🌾 Kisan Link</h4>
+          <p class="text-muted">
+            Connecting farmers directly with customers for fresh and affordable products.
+          </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-semibold text-success">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a routerLink="/" class="footer-link">Home</a></li>
+            <li><a routerLink="/" fragment="about" class="footer-link">About</a></li>
+            <li><a routerLink="/" fragment="modern" class="footer-link">Modern Farming</a></li>
+            <li><a routerLink="/contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-semibold text-success">Contact</h5>
+          <p class="mb-1">📍 Pune, India</p>
+          <p class="mb-1">📞 +91 98765 43210</p>
+          <!-- <p class="mb-1">📧 support@kisanlink.com</p> -->
+
+          <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-2">
+            <a href="#" class="social-icon">🌐</a>
+            <a href="#" class="social-icon">📘</a>
+            <a href="#" class="social-icon">🐦</a>
+            <a href="#" class="social-icon">📸</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="border-success">
+
+      <div class="text-center">
+        <p class="mb-0 text-muted">
+          © 2026 Kisan Link | All Rights Reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>

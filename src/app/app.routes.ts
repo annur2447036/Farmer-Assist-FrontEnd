@@ -19,7 +19,9 @@ export const routes: Routes = [
             {path:"signUp",loadComponent:()=>import('./Components/user/customer/customer.component').then(c=>c.CustomerComponent)},
             {path:"login",loadComponent:()=>import('./Components/user/login/login.component').then(d=>d.LoginComponent)},
             {path:"farmer-login",loadComponent:()=>import('./Components/user/farmer-login/farmer-login.component').then(a=>a.FarmerLoginComponent)},
-            {path :"farmer-register",loadComponent:()=>import('./Components/user/farmer-regsitration/farmer-regsitration.component').then(c=>c.FarmerRegsitrationComponent)}
+            {path :"farmer-register",loadComponent:()=>import('./Components/user/farmer-regsitration/farmer-regsitration.component').then(c=>c.FarmerRegsitrationComponent)},
+            {path :"products",loadComponent:()=>import('./Components/user/product-list/product-list.component').then(m=>m.ProductListComponent)}
+
 
         ]
     },
@@ -30,7 +32,8 @@ export const routes: Routes = [
         children:[
             {path:"home",loadComponent:()=>import('./Components/customer/home/home.component').then(c=>c.HomeComponent)},
              {path:'feedback',loadComponent:()=>import('./Components/customer/feedback/feedback.component').then(a=>a.FeedbackComponent)}
-        ]
+            
+            ]
     },
         {
       path:'admin/login',

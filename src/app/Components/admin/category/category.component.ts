@@ -48,6 +48,7 @@ export class CategoryComponent implements OnInit {
   loadCategories() {
     this.category.getAll().subscribe({
       next: (res: any[]) => {
+        console.log(res);
         this.categories = res;
       },
       error: (err) => {
@@ -79,9 +80,9 @@ export class CategoryComponent implements OnInit {
 
   // ✅ UPDATE
   updateCategory() {
-    if (!this.newCategory.cid) return;
+    if (!this.newCategory.id) return;
 
-    this.category.update(this.newCategory.cid, this.newCategory).subscribe({
+    this.category.update(this.newCategory.id, this.newCategory).subscribe({
       next: () => {
         this.success = 'Category updated successfully';
         this.loadCategories();

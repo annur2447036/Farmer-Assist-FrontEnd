@@ -31,7 +31,7 @@
       <label>Category</label>
       <select class="form-control" [(ngModel)]="newProduct.categoryId">
         <option [value]="null" disabled>Select Category</option>
-        <option *ngFor="let c of categories" [value]="c.cid">{{ c.name }}</option>
+        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
       </select>
     </div>
 
@@ -97,7 +97,7 @@
       </td>
       <td>{{ p.product_name }}</td>
       <td>{{ p.category.name }}</td>
-      <td>₹{{ p.price }}</td>.......
+      <td>₹{{ p.price }}</td>
       <td>{{ p.stock }}</td>
       <td>
         <button class="btn btn-sm btn-warning" (click)="editProduct(p)">Edit</button>
