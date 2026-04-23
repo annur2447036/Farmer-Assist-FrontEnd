@@ -20,7 +20,8 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
-    this.selectCategory;
+    this.loadproducts();
+    
   }
 
   loadCategories() {
@@ -35,8 +36,25 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  loadproducts(){
+  this.productservice.getAll().subscribe({
+    next:(res)=>{
+    this.productList =res;
+       console.log(res);
 
-  
+   },
+   error:(err)=>{
+      console.log(err);
+
+    }
+
+  })
+}
+
+
+
+
+
   selectCategory(c: ICategory) {
   this.productservice.getByCatId(c.id!).subscribe({
     next:(res) => {
