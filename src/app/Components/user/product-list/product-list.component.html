@@ -1,20 +1,112 @@
-<div *ngIf="productList.length">
-    <h5>Products</h5>
+ <!-- <div class="category-sidebar">
+
+  <h5 class="text-center p-3 mb-0">Categories</h5>
+
+  <div class="category-scroll p-3">
+
     <div class="row g-3">
+      <div *ngFor="let c of categoriesList" class="col-12">
 
-        <div *ngFor=" let p of productList" class="col-6 col-sm-4 col-md-3">
-          <div class="card" h-100 shadow-sm>
-            <h4 class="card-title">{{p.product_name}}</h4>
-            <img [src]="p.images?.[0]?.imageUrl" [alt]="p.product_name" style="height:120px; object-fit: cover;">
-            <div class="card-body"> 
-                <h6>{{p.price | currency:"INR"}}</h6>
+        <div class="card shadow-sm category-card"
+             (click)="selectCategory(c)">
 
-                <a class="btn btn-primary btn-sm mx-auto"> View More</a>
-            </div>
-            
-        
-        </div> 
-            </div>
+          <img [src]="c.imageurl"
+               [alt]="c.name"
+               style="height:100px; object-fit: cover; border-radius:5px 5px 0 0;">
+
+          <div class="card-body text-center p-2">
+            <h6 class="mb-0">{{c.name}}</h6>
+          </div>
+
+        </div>
+
+      </div>
     </div>
 
+  </div>
+
+</div> 
+
+
+ -->
+
+
+ <div class="container-fluid mt-3">
+  <div class="row">
+
+    <!-- LEFT: CATEGORY SIDEBAR -->
+    <div class="col-md-3">
+      <div class="category-sidebar">
+
+        <h5 class="text-center p-3 mb-0">Categories</h5>
+
+        <div class="category-scroll p-3">
+
+          <div class="row g-3">
+            <div *ngFor="let c of categoriesList" class="col-12">
+
+              <div class="card shadow-sm category-card"
+                   (click)="selectCategory(c)">
+
+                <img [src]="c.imageurl"
+                     style="height:100px; object-fit: cover;">
+
+                <div class="card-body text-center p-2">
+                  <h6>{{c.name}}</h6>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: PRODUCTS DISPLAY -->
+    <div class="col-md-9">
+
+     
+       <h4 *ngIf="selectCategory" class="mb-3">
+        {{ selectCategory.name }} Products
+      </h4> 
+
+ 
+      <div class="row g-3">
+        <div *ngFor="let p of productList" class="col-md-4">
+
+          <div class="card shadow-sm h-100">
+            <img [src]="p.images[0]?.imageUrl"
+                 class="card-img-top"
+                 style="height:200px; object-fit:cover;">
+
+            <div class="card-body">
+              <h6>{{p.product_name}}</h6>
+                  <p class="text-success fw-bold">
+                    {{ p.price | currency:'INR' }}
+                  </p>
+                  <!-- <p>{{p.specifications | json}}</p>             -->
+
+                  <div *ngFor="let s of p.specifications">
+                      {{ s.name }} : {{ s.value }}
+                    </div>
+
+                    <p> Farmer : {{p.farmer.name}}</p>
+                </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--if emplty then thiss -->
+      <div *ngIf="productList.length === 0 && selectCategory"
+           class="text-center mt-5 text-muted">
+        No products found select category ....
+      </div>
+
+    </div>
+
+  </div>
 </div>

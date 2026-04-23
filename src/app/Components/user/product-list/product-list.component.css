@@ -1,0 +1,14 @@
+.category-sidebar {
+  width: 230px;
+  height: 100vh;          
+  position: fixed;
+  left: 1px;
+  top: 50px;
+  bottom: 20px;
+
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+
+  overflow-y: auto;     /*  scrolling vercally */
+
+}

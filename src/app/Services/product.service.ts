@@ -72,4 +72,9 @@ export class ProductService {
 getByFarmerId(id: number): Observable<IProduct[]> {
   return this.http.get<IProduct[]>(`${this.apiUrl}/farmer/${id}`);
 }
+
+getByCatId(id :number): Observable<IProduct[]>{
+
+  return this.http.get<IProduct[]>(`${this.apiUrl}/categories/${id}`)
+}
 }
