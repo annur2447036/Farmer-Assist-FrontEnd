@@ -1,14 +1,14 @@
 import { CommonModule, CurrencyPipe, JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IProduct, IProductDTO, ProductService } from '../../../Services/product.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CategoryService, ICategory } from '../../../Services/category.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule,CurrencyPipe,FormsModule,JsonPipe],
+  imports: [CommonModule,CurrencyPipe,FormsModule,RouterLink],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -16,6 +16,8 @@ export class ProductListComponent implements OnInit {
 
   categoriesList: ICategory[] = [];
   productList : IProduct[]  = [];
+  selectedCategory!: ICategory;
+
   constructor(private categories: CategoryService, private productservice :ProductService) {}
 
   ngOnInit(): void {
@@ -51,12 +53,9 @@ export class ProductListComponent implements OnInit {
   })
 }
 
-
-
-
-
   selectCategory(c: ICategory) {
-  this.productservice.getByCatId(c.id!).subscribe({
+    this.selectedCategory = c;
+    this.productservice.getByCatId(c.id!).subscribe({
     next:(res) => {
       this.productList=res;
       console.log(res); 
