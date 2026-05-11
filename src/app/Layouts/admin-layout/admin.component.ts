@@ -14,10 +14,19 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 export class AdminComponent {
     constructor(private router:Router){}
 
+    isReportOpen=false;
+
 logout(){
   localStorage.removeItem('admin');
   this.router.navigate(['/']);
 }
 
+  toggle()
+  {
+    this.isReportOpen = ! this.isReportOpen;
+  }
 
 }
+
+
+

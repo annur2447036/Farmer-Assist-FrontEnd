@@ -54,4 +54,17 @@ getOrderByCustomer(customerId:number):Observable<any[]>{
 cancelOrder(orderId:number):Observable<any>{
    return this.http.put<any>(`${this.apiUrl}/${orderId}/cancel`,{});
   }
+
+    getAll():Observable<any[]>{
+    return this.http.get<any[]>(`${this.apiUrl}`);
+  }
+
+  updateOrderStatus(id:number,status:string):Observable<any>{
+   return this.http.put<any>(`${this.apiUrl}/${id}/status?status=${status}`,{});
+  }
+
+  getDashboard(){
+   return this.http.get<any[]>(`${this.apiUrl}/dashboard`)
+  }
+
 }

@@ -23,6 +23,10 @@ export const routes: Routes = [
             {path :"product",loadComponent:()=>import('./Components/user/product-list/product-list.component').then(m=>m.ProductListComponent)},
             {path :"product/:id",loadComponent:()=>import('./Components/user/product-details/product-details.component').then(m=>m.ProductDetailsComponent)},
             {path :"agri-robotices",loadComponent:()=>import('./Components/user/agri-robotics/agri-robotics.component').then(m=>m.AgriRoboticsComponent)},
+            {path :"aerohonics",loadComponent:()=>import('./Components/user/aerophonics/aerophonics.component').then(m=>m.AerophonicsComponent)},
+            {path :"greenhouse",loadComponent:()=>import('./Components/user/greenhouse/greenhouse.component').then(m=>m.GreenhouseComponent)},
+            {path :"hydrophonic",loadComponent:()=>import('./Components/user/hydrophonic/hydrophonic.component').then(m=>m.HydrophonicComponent)},
+            {path :"precision",loadComponent:()=>import('./Components/user/precision-farming/precision-farming.component').then(m=>m.PrecisionFarmingComponent)},
 
 
 
@@ -59,7 +63,11 @@ export const routes: Routes = [
       canActivate:[adminAuthGuard],
       children:[
         {path:'dashboard',loadComponent:()=>import('./Components/admin/dashboard/dashboard.component').then(m=>m.DashboardComponent)},
-        {path:'categories',loadComponent:()=>import('./Components/admin/category/category.component').then(m=>m.CategoryComponent)}
+        {path:'categories',loadComponent:()=>import('./Components/admin/category/category.component').then(m=>m.CategoryComponent)},
+         {path:'orders',loadComponent:()=>import('./Components/admin/orders/orders.component').then(m=>m.OrdersComponent)},
+         {path:'report/:type',loadComponent:()=>import('./Components/admin/report/report.component').then(m=>m.ReportComponent)},
+
+
       ]
     },
 

@@ -1,111 +1,124 @@
-.admin-layout {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+/* =========================
+   ADVANCED NAVBAR EFFECTS
+========================= */
+
+/* NAV LINKS */
+.nav-link{
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    letter-spacing: 0.3px;
 }
 
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.7);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-radius: 0 0 15px 15px;
+/* SMOOTH HOVER */
+.nav-link:hover{
+    background: rgba(255,255,255,0.15);
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2e7d32;
-  letter-spacing: 1px;
-  transition: 0.3s;
+/* ANIMATED BOTTOM BORDER */
+.nav-link::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 0%;
+    height: 2px;
+    background: #ffc107;
+    transition: all 0.35s ease;
+    transform: translateX(-50%);
+    border-radius: 20px;
 }
 
-.logo:hover {
-  transform: scale(1.05);
+.nav-link:hover::after{
+    width: 70%;
 }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
+/* ACTIVE LINK */
+.nav-link.active{
+    background: rgba(255,255,255,0.18);
+    color: #fff !important;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.18);
 }
 
-.nav-links a {
-  position: relative;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: 0.3s;
-  padding: 5px 0;
+/* ICON ANIMATION */
+.nav-link i{
+    transition: transform 0.3s ease;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 2px;
-  background: #4caf50;
-  transition: 0.3s;
+.nav-link:hover i{
+    transform: rotate(-8deg) scale(1.15);
 }
 
-.nav-links a:hover {
-  color: #4caf50;
+/* =========================
+   DROPDOWN EFFECTS
+========================= */
+
+.dropdown-menu{
+    border: none;
+    animation: dropdownFade 0.3s ease;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+@keyframes dropdownFade{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.nav-links .active {
-  color: #4caf50;
-  font-weight: 600;
+.dropdown-item{
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.nav-links .active::after {
-  width: 100%;
+/* DROPDOWN HOVER */
+.dropdown-item:hover{
+    background: linear-gradient(45deg,#198754,#20c997);
+    color: white;
+    transform: translateX(5px);
 }
 
-.logout {
-  background: linear-gradient(45deg, #e53935, #ef5350);
-  border: none;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: 0.3s;
+/* =========================
+   LOGOUT BUTTON
+========================= */
+
+.btn-warning{
+    transition: all 0.35s ease;
 }
 
-.logout:hover {
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.btn-warning:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 18px rgba(255,193,7,0.4);
 }
 
-.main-content {
-  padding: 25px;
+/* =========================
+   NAVBAR EFFECT
+========================= */
+
+.navbar{
+    backdrop-filter: blur(10px);
 }
 
-.content {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  min-height: 80vh;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  animation: fadeIn 0.4s ease-in-out;
-}
+/* =========================
+   MOBILE EFFECT
+========================= */
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media(max-width:991px){
+
+    .nav-link{
+        margin-bottom: 8px;
+    }
+
+    .nav-link:hover{
+        transform: translateX(5px);
+    }
+
 }
