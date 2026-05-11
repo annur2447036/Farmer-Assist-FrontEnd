@@ -1,0 +1,32 @@
+.hero-section {
+  height: 350px;
+  background: linear-gradient(135deg, #16a34a, #4ade80);
+}
+
+.banner-img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.offer-strip {
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+}
+
+.category-card,
+.product-card,
+.action-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover,
+.product-card:hover,
+.action-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.product-img {
+  height: 150px;
+  object-fit: cover;
+}

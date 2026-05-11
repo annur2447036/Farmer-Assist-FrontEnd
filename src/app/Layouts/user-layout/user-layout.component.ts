@@ -1,10 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-user-layout',
   standalone: true,
-  imports: [RouterLink,RouterOutlet],
+  imports: [RouterLink,RouterOutlet, FooterComponent],
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.css'
 })

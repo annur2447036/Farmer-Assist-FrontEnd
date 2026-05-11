@@ -24,3 +24,53 @@
 .navbar .nav-link:hover::after {
   width: 100%;
 }
+.main-wrapper {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 THIS FIXES OVERLAP */
+.content-scroll {
+  overflow-y: auto;
+  height: calc(100vh - 140px); /* navbar + footer space */
+}
+
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 🔥 PERFECT SCROLL AREA */
+.content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+/* ensure navbar stays above */
+nav {
+  z-index: 1000;
+}
+
+/* Footer Custom Styles */
+.footer-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #ffc107;
+  transform: translateX(5px);
+}
+
+.footer-social-icon:hover {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+  transform: translateY(-3px);
+}

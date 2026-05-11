@@ -1,0 +1,192 @@
+<style>
+.cart-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #4f46e5, #6366f1);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #4338ca, #4f46e5);
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+input.form-control {
+  border-radius: 10px;
+}
+
+h2 {
+  letter-spacing: 1px;
+}
+</style>
+
+<div class="container py-5 cart-bg">
+
+  <h2 class="text-center fw-bold mb-4 text-primary">
+    🛒 My Shopping Cart
+  </h2>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+    <p class="mt-2 text-muted">Loading your cart...</p>
+  </div>
+
+  <div *ngIf="!loading && cartItems.length === 0" class="text-center py-5">
+    <h4 class="text-muted">Your cart is empty 😔</h4>
+    <button class="btn btn-outline-primary mt-3">Continue Shopping</button>
+  </div>
+
+  <div *ngIf="cartItems.length > 0" class="row g-4">
+
+    <div *ngFor="let item of cartItems" class="col-12">
+      <div class="card border-0 shadow p-2">
+        <div class="row align-items-center g-3">
+
+          <div class="col-md-2 text-center">
+            <img [src]="getImage(item)"
+                 class="img-fluid rounded-3 border"
+                 style="height:100px; object-fit:cover;">
+          </div>
+
+          <div class="col-md-5">
+            <h5 class="fw-semibold mb-1">
+              {{ item.product.product_name }}
+            </h5>
+
+            <p class="text-muted mb-2">
+              ₹{{ item.product.price | number }}
+            </p>
+
+            <div class="input-group w-auto shadow-sm">
+              <button class="btn btn-outline-dark"
+                      (click)="updateQuantity(item,-1)">−</button>
+
+              <input type="number"
+                     class="form-control text-center fw-bold"
+                     style="max-width:70px"
+                     [(ngModel)]="item.quantity">
+
+              <button class="btn btn-outline-dark"
+                      (click)="updateQuantity(item,1)">+</button>
+            </div>
+          </div>
+
+          <div class="col-md-5 text-end">
+            <h5 class="text-success fw-bold">
+              ₹{{ item.product.price * item.quantity | number }}
+            </h5>
+
+            <button class="btn btn-sm btn-outline-danger mt-2"
+                    (click)="removeItem(item)">
+              🗑 Remove
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="card shadow border-0 p-4">
+
+        <h5 class="mb-3 fw-bold text-secondary">
+          🚚 Shipping Information
+        </h5>
+
+        <form>
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input type="text"
+                     class="form-control shadow-sm"
+                     [(ngModel)]="shipping.name"
+                     name="name" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Contact</label>
+              <input type="text"
+                     class="form-control shadow-sm"
+                     [(ngModel)]="shipping.contact"
+                     name="contact" required>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <input type="text"
+                     class="form-control shadow-sm"
+                     [(ngModel)]="shipping.address"
+                     name="address" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">City</label>
+              <input type="text"
+                     class="form-control shadow-sm"
+                     [(ngModel)]="shipping.city"
+                     name="city" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Pin Code</label>
+              <input type="text"
+                     class="form-control shadow-sm"
+                     [(ngModel)]="shipping.pinCode"
+                     name="pinCode" required>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="card border-0 shadow p-4 bg-light">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+          <h4 class="fw-bold text-dark mb-0">
+            Total: <span class="text-success">₹{{ total | number }}</span>
+          </h4>
+
+          <div class="d-flex gap-2">
+
+            <button class="btn btn-outline-danger px-4"
+                    (click)="clearCart()">
+              🗑 Clear Cart
+            </button>
+
+            <button class="btn btn-primary px-4 fw-semibold shadow"
+                    (click)="placeOrder()">
+              ✅ Place Order
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

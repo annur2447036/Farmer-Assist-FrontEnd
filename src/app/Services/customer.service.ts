@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from './api.config';
 export interface ICustomer {
+  id? :number;
   address: string;
   city: string;
   contact: number;

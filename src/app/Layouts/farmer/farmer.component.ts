@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet, RouterLink } from '@angular/router';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-farmer',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, FooterComponent],
   templateUrl: './farmer.component.html',
   styleUrl: './farmer.component.css'
 })

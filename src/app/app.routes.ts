@@ -20,7 +20,15 @@ export const routes: Routes = [
             {path:"login",loadComponent:()=>import('./Components/user/login/login.component').then(d=>d.LoginComponent)},
             {path:"farmer-login",loadComponent:()=>import('./Components/user/farmer-login/farmer-login.component').then(a=>a.FarmerLoginComponent)},
             {path :"farmer-register",loadComponent:()=>import('./Components/user/farmer-regsitration/farmer-regsitration.component').then(c=>c.FarmerRegsitrationComponent)},
-            {path :"products",loadComponent:()=>import('./Components/user/product-list/product-list.component').then(m=>m.ProductListComponent)}
+            {path :"product",loadComponent:()=>import('./Components/user/product-list/product-list.component').then(m=>m.ProductListComponent)},
+            {path :"product/:id",loadComponent:()=>import('./Components/user/product-details/product-details.component').then(m=>m.ProductDetailsComponent)},
+            {path :"agri-robotices",loadComponent:()=>import('./Components/user/agri-robotics/agri-robotics.component').then(m=>m.AgriRoboticsComponent)},
+
+
+
+
+
+         
 
 
         ]
@@ -31,8 +39,14 @@ export const routes: Routes = [
         canActivate:[customerAuthGuard],
         children:[
             {path:"home",loadComponent:()=>import('./Components/customer/home/home.component').then(c=>c.HomeComponent)},
-             {path:'feedback',loadComponent:()=>import('./Components/customer/feedback/feedback.component').then(a=>a.FeedbackComponent)}
-            
+            {path:'feedback',loadComponent:()=>import('./Components/customer/feedback/feedback.component').then(a=>a.FeedbackComponent)},
+            {path:'products/:id',loadComponent:()=>import('./Components/customer/product-details/product-details.component').then(a=>a.ProductDetailsComponent)},
+            {path :'products',loadComponent:()=>import('./Components/customer/product-list/product-list.component').then(a=>a.ProductListComponent)},
+            {path :'cart',loadComponent:()=>import('./Components/customer/cart/cart.component').then(a=>a.CartComponent)},
+            { path: 'payment', loadComponent: () => import('./Components/customer/payment/payment.component').then(m => m.PaymentComponent) },
+            { path: 'payment-success', loadComponent: () => import('./Components/customer/payment-success/payment-success.component').then(m => m.PaymentSuccessComponent) },
+            { path: 'payment-failed', loadComponent: () => import('./Components/customer/payment-failed/payment-failed.component').then(m => m.PaymentFailedComponent) },
+            { path: 'myOrder', loadComponent: () => import('./Components/customer/my-orders/my-orders.component').then(m => m.MyOrdersComponent) },
             ]
     },
         {
